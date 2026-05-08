@@ -11,4 +11,4 @@ coverage/
 supabase/.branches/
 supabase/.temp/
 .DS_Store
-.logs/api-dev.log
+.logs/
