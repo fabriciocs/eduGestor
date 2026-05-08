@@ -1,0 +1,5 @@
+$ErrorActionPreference = "Stop"
+Write-Host "== EduGestor 360: dev =="
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd apps/api; npm run dev"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd apps/web_flutter; flutter run -d chrome"
+Write-Host "API and Flutter dev processes started."

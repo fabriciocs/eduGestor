@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: EduGestor 360 API
+  version: 0.1.0
+servers:
+  - url: http://localhost:3000
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      summary: Healthcheck
+      responses:
+        '200':
+          description: API disponível
+  /v1/students:
+    get:
+      summary: Lista alunos do tenant autenticado
+      responses:
+        '200':
+          description: Lista paginada
+    post:
+      summary: Cria aluno
+      responses:
+        '201':
+          description: Aluno criado
+  /v1/students/{id}:
+    get:
+      summary: Obtém aluno
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: Aluno }
+    patch:
+      summary: Atualiza aluno
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: Aluno atualizado }
+    delete:
+      summary: Inativa aluno por soft delete
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '204': { description: Inativado }
+  /v1/guardians:
+    get:
+      summary: Lista responsáveis
+      responses:
+        '200': { description: Lista paginada }
+    post:
+      summary: Cria responsável
+      responses:
+        '201': { description: Responsável criado }
+  /v1/student-guardians:
+    post:
+      summary: Vincula responsável ao aluno
+      responses:
+        '201': { description: Vínculo criado }
+  /v1/audit-events:
+    get:
+      summary: Lista auditoria do tenant
+      responses:
+        '200': { description: Eventos paginados }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

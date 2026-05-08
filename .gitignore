@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+.dart_tool/
+.packages
+.pub-cache/
+coverage/
+supabase/.branches/
+supabase/.temp/
+.DS_Store

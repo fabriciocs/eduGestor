@@ -1,0 +1,10 @@
+-- Teste manual/pgTAP sugerido para ambiente Supabase local.
+-- Objetivo: validar que tenant A não acessa registros do tenant B.
+--
+-- 1. Autenticar como usuário com app_metadata.tenant_id = 00000000-0000-0000-0000-000000000001
+-- 2. Executar:
+--    select * from public.students where tenant_id = '00000000-0000-0000-0000-000000000002';
+-- 3. Resultado esperado: zero linhas.
+--
+-- 4. Tentar inserir aluno com tenant_id de outro tenant.
+-- 5. Resultado esperado: erro de RLS.

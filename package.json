@@ -1,0 +1,22 @@
+{
+  "name": "edugestor-360",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Monorepo EduGestor 360 - SaaS multi-tenant de gestão escolar.",
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "lint": "npm run lint -w apps/api",
+    "test": "npm run test -w apps/api",
+    "build": "npm run build -w apps/api",
+    "validate": "npm run lint && npm run test && npm run build"
+  },
+  "workspaces": [
+    "apps/api"
+  ],
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
