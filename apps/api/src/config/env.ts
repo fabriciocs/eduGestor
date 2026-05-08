@@ -1,5 +1,14 @@
-import 'dotenv/config';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import dotenv from 'dotenv';
 import { z } from 'zod';
+
+const currentDir = dirname(fileURLToPath(import.meta.url));
+const workspaceEnvPath = resolve(currentDir, '../../../../.env');
+const localEnvPath = resolve(currentDir, '../../.env');
+
+dotenv.config({ path: workspaceEnvPath });
+dotenv.config({ path: localEnvPath, override: false });
 
 const envSchema = z.object({
   APP_ENV: z.string().default('local'),

@@ -1,0 +1,121 @@
+
+> @edugestor/api@0.1.0 dev
+> tsx watch src/main.ts
+
+file:///C:/Users/Fabricio.Cunha/Downloads/edugestor-360/node_modules/zod/v3/types.js:39
+                const error = new ZodError(ctx.common.issues);
+                              ^
+
+ZodError: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "SUPABASE_URL"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "SUPABASE_ANON_KEY"
+    ],
+    "message": "Required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "message": "Required"
+  }
+]
+    at get error (file:///C:/Users/Fabricio.Cunha/Downloads/edugestor-360/node_modules/zod/v3/types.js:39:31)
+    at ZodObject.parse (file:///C:/Users/Fabricio.Cunha/Downloads/edugestor-360/node_modules/zod/v3/types.js:114:22)
+    at <anonymous> (C:\Users\Fabricio.Cunha\Downloads\edugestor-360\apps\api\src\config\env.ts:18:30)
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:651:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  issues: [
+    {
+      code: 'invalid_type',
+      expected: 'string',
+      received: 'undefined',
+      path: [ 'SUPABASE_URL' ],
+      message: 'Required'
+    },
+    {
+      code: 'invalid_type',
+      expected: 'string',
+      received: 'undefined',
+      path: [ 'SUPABASE_ANON_KEY' ],
+      message: 'Required'
+    },
+    {
+      code: 'invalid_type',
+      expected: 'string',
+      received: 'undefined',
+      path: [ 'SUPABASE_SERVICE_ROLE_KEY' ],
+      message: 'Required'
+    }
+  ],
+  addIssue: [Function (anonymous)],
+  addIssues: [Function (anonymous)],
+  errors: [
+    {
+      code: 'invalid_type',
+      expected: 'string',
+      received: 'undefined',
+      path: [ 'SUPABASE_URL' ],
+      message: 'Required'
+    },
+    {
+      code: 'invalid_type',
+      expected: 'string',
+      received: 'undefined',
+      path: [ 'SUPABASE_ANON_KEY' ],
+      message: 'Required'
+    },
+    {
+      code: 'invalid_type',
+      expected: 'string',
+      received: 'undefined',
+      path: [ 'SUPABASE_SERVICE_ROLE_KEY' ],
+      message: 'Required'
+    }
+  ]
+}
+
+Node.js v22.19.0
+13:16:57 [tsx] unlink in ./src\config\env.ts Rerunning...
+c
+C:\Users\Fabricio.Cunha\Downloads\edugestor-360\node_modules\@fastify\error\index.js:28
+      return new FastifyError(...args)
+             ^
+FastifyError [Error]: logger options only accepts a configuration object.
+    at FastifyError (C:\Users\Fabricio.Cunha\Downloads\edugestor-360\node_modules\@fastify\error\index.js:28:14)
+    at createLogger (C:\Users\Fabricio.Cunha\Downloads\edugestor-360\node_modules\fastify\lib\logger-factory.js:100:11)
+    at processOptions (C:\Users\Fabricio.Cunha\Downloads\edugestor-360\node_modules\fastify\fastify.js:867:33)
+    at fastify (C:\Users\Fabricio.Cunha\Downloads\edugestor-360\node_modules\fastify\fastify.js:95:7)
+    at buildApp (C:\Users\Fabricio.Cunha\Downloads\edugestor-360\apps\api\src\app.ts:16:15)
+    at <anonymous> (C:\Users\Fabricio.Cunha\Downloads\edugestor-360\apps\api\src\main.ts:4:13)
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:651:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  code: 'FST_ERR_LOG_INVALID_LOGGER_CONFIG',
+  statusCode: 500
+}
+
+Node.js v22.19.0
+npm error Lifecycle script `dev` failed with error:
+npm error code 4294967295
+npm error path C:\Users\Fabricio.Cunha\Downloads\edugestor-360\apps\api
+npm error workspace @edugestor/api@0.1.0
+npm error location C:\Users\Fabricio.Cunha\Downloads\edugestor-360\apps\api
+npm error command failed
+npm error command C:\Windows\system32\cmd.exe /d /s /c tsx watch src/main.ts
