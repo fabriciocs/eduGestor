@@ -1,4 +1,8 @@
-# Manifest de arquivos gerados
+# Manifesto de arquivos - EduGestor 360
+
+Total de arquivos: 108
+
+## Arquivos
 
 - `.env.example`
 - `.gitignore`
@@ -19,9 +23,14 @@
 - `apps/api/src/core/logging/logger.ts`
 - `apps/api/src/core/supabase/server-client.ts`
 - `apps/api/src/core/validation/validate.ts`
+- `apps/api/src/generated/catalog.ts`
 - `apps/api/src/main.ts`
 - `apps/api/src/modules/audit/audit.repository.ts`
 - `apps/api/src/modules/audit/audit.routes.ts`
+- `apps/api/src/modules/catalog/catalog.routes.ts`
+- `apps/api/src/modules/generic/generic.repository.ts`
+- `apps/api/src/modules/generic/generic.routes.ts`
+- `apps/api/src/modules/generic/generic.service.ts`
 - `apps/api/src/modules/guardians/guardian.repository.ts`
 - `apps/api/src/modules/guardians/guardian.routes.ts`
 - `apps/api/src/modules/guardians/guardian.schemas.ts`
@@ -38,11 +47,14 @@
 - `apps/api/src/modules/users/user.routes.ts`
 - `apps/api/src/modules/users/user.schemas.ts`
 - `apps/api/src/modules/users/user.service.ts`
+- `apps/api/src/modules/workflows/workflow.routes.ts`
 - `apps/api/src/openapi/openapi.yaml`
 - `apps/api/src/types/fastify.d.ts`
 - `apps/api/tests/contract/openapi.contract.test.ts`
 - `apps/api/tests/security/log-redaction.test.ts`
+- `apps/api/tests/security/no-frontend-service-role.test.ts`
 - `apps/api/tests/unit/authorization.service.test.ts`
+- `apps/api/tests/unit/catalog.test.ts`
 - `apps/api/tests/unit/student.schema.test.ts`
 - `apps/api/tsconfig.json`
 - `apps/web_flutter/analysis_options.yaml`
@@ -52,11 +64,17 @@
 - `apps/web_flutter/lib/app/theme/app_theme.dart`
 - `apps/web_flutter/lib/core/config/app_config.dart`
 - `apps/web_flutter/lib/core/http/api_client.dart`
+- `apps/web_flutter/lib/features/auth/presentation/pages/auth_token_page.dart`
+- `apps/web_flutter/lib/features/catalog/presentation/pages/modules_page.dart`
 - `apps/web_flutter/lib/features/dashboard/presentation/pages/dashboard_page.dart`
+- `apps/web_flutter/lib/features/entities/data/generic_entity_repository.dart`
+- `apps/web_flutter/lib/features/entities/presentation/pages/entity_list_page.dart`
 - `apps/web_flutter/lib/features/students/data/student_model.dart`
 - `apps/web_flutter/lib/features/students/data/student_repository.dart`
 - `apps/web_flutter/lib/features/students/presentation/pages/student_form_page.dart`
 - `apps/web_flutter/lib/features/students/presentation/pages/students_list_page.dart`
+- `apps/web_flutter/lib/features/workflows/presentation/pages/workflows_page.dart`
+- `apps/web_flutter/lib/generated/catalog.dart`
 - `apps/web_flutter/lib/main.dart`
 - `apps/web_flutter/lib/shared/forms/form_section.dart`
 - `apps/web_flutter/lib/shared/layout/responsive_scaffold.dart`
@@ -64,9 +82,11 @@
 - `apps/web_flutter/pubspec.yaml`
 - `apps/web_flutter/test/features/students/student_form_test.dart`
 - `apps/web_flutter/test/shared/status_badge_test.dart`
+- `docs/api/openapi-complete.md`
 - `docs/api/openapi.md`
 - `docs/architecture/implementation-plan.md`
 - `docs/architecture/overview.md`
+- `docs/implementation-complete-report.md`
 - `docs/implementation-report.md`
 - `docs/runbooks/local-development.md`
 - `docs/security/lgpd.md`
@@ -88,5 +108,7 @@
 - `supabase/migrations/000004_audit.sql`
 - `supabase/migrations/000005_students_guardians.sql`
 - `supabase/migrations/000006_rls_core.sql`
+- `supabase/migrations/000010_complete_domain_model.sql`
 - `supabase/seed.sql`
+- `supabase/tests/rls_complete_model.test.sql`
 - `supabase/tests/rls_core.test.sql`

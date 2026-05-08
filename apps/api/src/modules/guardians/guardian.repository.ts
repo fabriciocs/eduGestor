@@ -9,35 +9,24 @@ export interface GuardianCreateInput {
   status?: 'active' | 'inactive';
 }
 
-export async function listGuardians(
-  tenantId: string,
-  pagination: PaginationInput,
-) {
+export async function listGuardians(tenantId: string, pagination: PaginationInput) {
   const { from, to } = toRange(pagination);
   let query = supabaseAdmin
     .from('guardians')
-    .select(
-      'id, full_name, email, phone, document_number, status, created_at',
-      { count: 'exact' },
-    )
+    .select('id, full_name, email, phone, document_number, status, created_at', { count: 'exact' })
     .eq('tenant_id', tenantId)
     .is('deleted_at', null)
     .order('full_name')
     .range(from, to);
 
-  if (pagination.search)
-    query = query.ilike('full_name', `%${pagination.search}%`);
+  if (pagination.search) query = query.ilike('full_name', `%${pagination.search}%`);
 
   const { data, error, count } = await query;
   if (error) throw error;
   return { data, count, page: pagination.page, pageSize: pagination.pageSize };
 }
 
-export async function createGuardian(
-  tenantId: string,
-  input: GuardianCreateInput,
-  userId: string,
-) {
+export async function createGuardian(tenantId: string, input: GuardianCreateInput, userId: string) {
   const { data, error } = await supabaseAdmin
     .from('guardians')
     .insert({

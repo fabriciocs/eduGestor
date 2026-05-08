@@ -1,25 +1,12 @@
 import 'package:edugestor_360/features/students/presentation/pages/student_form_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:go_router/go_router.dart';
 
 void main() {
-  testWidgets('formulÃ¡rio de aluno exige campos obrigatÃ³rios', (tester) async {
-    final router = GoRouter(
-      initialLocation: '/alunos/novo',
-      routes: [
-        GoRoute(
-          path: '/alunos/novo',
-          builder: (context, state) => const StudentFormPage(),
-        ),
-      ],
-    );
+  testWidgets('formulário de aluno exige campos obrigatórios', (tester) async {
+    await tester.pumpWidget(const MaterialApp(home: StudentFormPage()));
 
-    await tester.pumpWidget(MaterialApp.router(routerConfig: router));
-    await tester.pumpAndSettle();
-
-    final formState = tester.state<FormState>(find.byType(Form));
-    expect(formState.validate(), isFalse);
+    await tester.tap(find.text('Criar aluno'));
     await tester.pump();
 
     expect(find.text('Informe o nome completo.'), findsOneWidget);

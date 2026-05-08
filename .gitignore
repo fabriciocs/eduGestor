@@ -11,4 +11,3 @@ coverage/
 supabase/.branches/
 supabase/.temp/
 .DS_Store
-.logs/

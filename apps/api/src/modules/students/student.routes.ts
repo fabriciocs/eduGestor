@@ -1,16 +1,12 @@
 import { FastifyInstance } from 'fastify';
 import { validateInput } from '../../core/validation/validate.js';
 import { paginationSchema } from '../../core/http/pagination.js';
-import {
-  studentCreateSchema,
-  studentIdParamsSchema,
-  studentUpdateSchema,
-} from './student.schemas.js';
+import { studentCreateSchema, studentIdParamsSchema, studentUpdateSchema } from './student.schemas.js';
 import * as service from './student.service.js';
 
 export function registerStudentRoutes(app: FastifyInstance) {
   app.get('/students', async (request) => {
-    const pagination = validateInput(paginationSchema, request.query);
+    const pagination = { page: 1, pageSize: 20, ...validateInput(paginationSchema, request.query) };
     return service.listStudents(request.tenant!, pagination);
   });
 

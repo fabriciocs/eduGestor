@@ -11,12 +11,14 @@ import { registerUserRoutes } from './modules/users/user.routes.js';
 import { registerStudentRoutes } from './modules/students/student.routes.js';
 import { registerGuardianRoutes } from './modules/guardians/guardian.routes.js';
 import { registerAuditRoutes } from './modules/audit/audit.routes.js';
+import { registerCatalogRoutes } from './modules/catalog/catalog.routes.js';
+import { registerGenericEntityRoutes } from './modules/generic/generic.routes.js';
+import { registerWorkflowRoutes } from './modules/workflows/workflow.routes.js';
 
 export function buildApp() {
   const app = Fastify({
-    loggerInstance: logger,
-    genReqId: (request) =>
-      request.headers['x-request-id']?.toString() ?? randomUUID(),
+    logger,
+    genReqId: (request) => request.headers['x-request-id']?.toString() ?? randomUUID(),
   });
 
   app.register(helmet);
@@ -29,17 +31,17 @@ export function buildApp() {
     service: 'edugestor-api',
   }));
 
-  app.register(
-    async (secured) => {
-      secured.addHook('preHandler', authenticate);
-      registerTenantRoutes(secured);
-      registerUserRoutes(secured);
-      registerStudentRoutes(secured);
-      registerGuardianRoutes(secured);
-      registerAuditRoutes(secured);
-    },
-    { prefix: '/v1' },
-  );
+  app.register(async (secured) => {
+    secured.addHook('preHandler', authenticate);
+    registerTenantRoutes(secured);
+    registerUserRoutes(secured);
+    registerStudentRoutes(secured);
+    registerGuardianRoutes(secured);
+    registerAuditRoutes(secured);
+    registerCatalogRoutes(secured);
+    registerGenericEntityRoutes(secured);
+    registerWorkflowRoutes(secured);
+  }, { prefix: '/v1' });
 
   return app;
 }

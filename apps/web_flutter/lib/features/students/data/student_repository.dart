@@ -14,8 +14,8 @@ class StudentRepository {
       },
     );
 
-    final data =
-        (result['data'] as List<dynamic>? ?? []).cast<Map<String, dynamic>>();
+    final data = (result['data'] as List<dynamic>? ?? [])
+        .cast<Map<String, dynamic>>();
 
     return data.map(Student.fromJson).toList();
   }

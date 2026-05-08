@@ -5,9 +5,7 @@ import { AuthRole, TenantContext } from './tenant-context.js';
 
 function parseRoles(value: unknown): AuthRole[] {
   if (!Array.isArray(value)) return [];
-  return value.filter(
-    (role): role is AuthRole => typeof role === 'string',
-  ) as AuthRole[];
+  return value.filter((role): role is AuthRole => typeof role === 'string') as AuthRole[];
 }
 
 function parseUnitIds(value: unknown): string[] {
@@ -15,10 +13,7 @@ function parseUnitIds(value: unknown): string[] {
   return value.filter((unit): unit is string => typeof unit === 'string');
 }
 
-export async function authenticate(
-  request: FastifyRequest,
-  _reply: FastifyReply,
-) {
+export async function authenticate(request: FastifyRequest, _reply: FastifyReply) {
   const authHeader = request.headers.authorization;
   if (!authHeader?.startsWith('Bearer ')) {
     throw AppError.unauthenticated();
@@ -32,8 +27,7 @@ export async function authenticate(
   }
 
   const metadata = data.user.app_metadata ?? {};
-  const tenantId =
-    typeof metadata.tenant_id === 'string' ? metadata.tenant_id : undefined;
+  const tenantId = typeof metadata.tenant_id === 'string' ? metadata.tenant_id : undefined;
   if (!tenantId) {
     throw AppError.forbidden('Usuário sem tenant associado.');
   }
@@ -50,10 +44,7 @@ export async function authenticate(
 }
 
 export function requireRoles(allowedRoles: AuthRole[]) {
-  return async function requireRolesMiddleware(
-    request: FastifyRequest,
-    _reply: FastifyReply,
-  ) {
+  return async function requireRolesMiddleware(request: FastifyRequest, _reply: FastifyReply) {
     const context = request.tenant;
     if (!context) throw AppError.unauthenticated();
     if (!context.roles.some((role) => allowedRoles.includes(role))) {

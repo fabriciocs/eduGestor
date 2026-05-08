@@ -15,7 +15,13 @@ class ResponsiveScaffold extends StatelessWidget {
 
   static const destinations = [
     _Destination(label: 'Dashboard', icon: Icons.dashboard_outlined, path: '/'),
+    _Destination(label: 'Módulos', icon: Icons.apps_outlined, path: '/modulos'),
+    _Destination(label: 'Fluxos', icon: Icons.route_outlined, path: '/fluxos'),
     _Destination(label: 'Alunos', icon: Icons.school_outlined, path: '/alunos'),
+    _Destination(label: 'Financeiro', icon: Icons.payments_outlined, path: '/entidades/conta_receber'),
+    _Destination(label: 'Comunicação', icon: Icons.campaign_outlined, path: '/entidades/comunicado'),
+    _Destination(label: 'Auditoria', icon: Icons.verified_user_outlined, path: '/entidades/log_auditoria'),
+    _Destination(label: 'Autenticação', icon: Icons.lock_outline, path: '/auth'),
   ];
 
   @override

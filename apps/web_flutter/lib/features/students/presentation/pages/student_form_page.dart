@@ -46,8 +46,7 @@ class _StudentFormPageState extends State<StudentFormPage> {
     try {
       if (isEditing) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('Edição será conectada na próxima fatia.')),
+          const SnackBar(content: Text('Edição será conectada na próxima fatia.')),
         );
       } else {
         await _repository.createStudent(
@@ -78,8 +77,7 @@ class _StudentFormPageState extends State<StudentFormPage> {
           children: [
             FormSection(
               title: 'Dados do aluno',
-              description:
-                  'Formulário em página dedicada, conforme diretriz UX.',
+              description: 'Formulário em página dedicada, conforme diretriz UX.',
               children: [
                 TextFormField(
                   controller: _fullNameController,

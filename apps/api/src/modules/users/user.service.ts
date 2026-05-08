@@ -11,10 +11,7 @@ export async function listUsers(context: TenantContext) {
   return repo.listUsers(context.id);
 }
 
-export async function registerLocalUser(
-  context: TenantContext,
-  input: { email: string; fullName: string },
-) {
+export async function registerLocalUser(context: TenantContext, input: { email: string; fullName: string }) {
   if (!context.roles.some((role) => allowedAdminRoles.includes(role))) {
     throw AppError.forbidden('Perfil sem permissão para cadastrar usuários.');
   }

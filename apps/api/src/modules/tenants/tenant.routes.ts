@@ -1,9 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import { validateInput } from '../../core/validation/validate.js';
-import {
-  tenantCreateSchema,
-  tenantUnitCreateSchema,
-} from './tenant.schemas.js';
+import { tenantCreateSchema, tenantUnitCreateSchema } from './tenant.schemas.js';
 import * as service from './tenant.service.js';
 
 export function registerTenantRoutes(app: FastifyInstance) {

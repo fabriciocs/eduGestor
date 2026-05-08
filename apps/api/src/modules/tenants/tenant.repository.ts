@@ -33,10 +33,7 @@ export async function listTenants() {
   return data;
 }
 
-export async function createTenantUnit(
-  input: { tenantId: string; name: string; code: string },
-  userId: string,
-) {
+export async function createTenantUnit(input: { tenantId: string; name: string; code: string }, userId: string) {
   const { data, error } = await supabaseAdmin
     .from('tenant_units')
     .insert({

@@ -5,7 +5,7 @@ import { listAuditEvents } from './audit.repository.js';
 
 export function registerAuditRoutes(app: FastifyInstance) {
   app.get('/audit-events', async (request) => {
-    const pagination = validateInput(paginationSchema, request.query);
+    const pagination = { page: 1, pageSize: 20, ...validateInput(paginationSchema, request.query) };
     return listAuditEvents(request.tenant!.id, pagination);
   });
 }

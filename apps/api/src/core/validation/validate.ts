@@ -1,13 +1,10 @@
-import { z } from 'zod';
+import { ZodSchema } from 'zod';
 import { AppError } from '../errors/app-error.js';
 
-export function validateInput<TSchema extends z.ZodTypeAny>(
-  schema: TSchema,
-  input: unknown,
-): z.output<TSchema> {
+export function validateInput<T>(schema: ZodSchema<T>, input: unknown): T {
   const result = schema.safeParse(input);
   if (!result.success) {
-    throw AppError.validation('Payload invÃ¡lido.', result.error.flatten());
+    throw AppError.validation('Payload inválido.', result.error.flatten());
   }
   return result.data;
 }

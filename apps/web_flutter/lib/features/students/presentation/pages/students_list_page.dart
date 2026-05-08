@@ -34,8 +34,7 @@ class _StudentsListPageState extends State<StudentsListPage> {
 
   void _search() {
     setState(() {
-      _studentsFuture =
-          _repository.listStudents(search: _searchController.text);
+      _studentsFuture = _repository.listStudents(search: _searchController.text);
     });
   }
 
@@ -59,8 +58,7 @@ class _StudentsListPageState extends State<StudentsListPage> {
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 8),
-          const Text(
-              'CRUD inicial com isolamento por tenant, soft delete e auditoria.'),
+          const Text('CRUD inicial com isolamento por tenant, soft delete e auditoria.'),
           const SizedBox(height: 20),
           TextField(
             controller: _searchController,
@@ -102,8 +100,7 @@ class _StudentsListPageState extends State<StudentsListPage> {
                         title: Text(student.fullName),
                         subtitle: Text('Nascimento: ${student.birthDate}'),
                         trailing: StatusBadge(
-                          label:
-                              student.status == 'active' ? 'Ativo' : 'Inativo',
+                          label: student.status == 'active' ? 'Ativo' : 'Inativo',
                           status: student.status,
                         ),
                         onTap: () => context.go('/alunos/${student.id}'),
@@ -145,8 +142,7 @@ class _EmptyState extends StatelessWidget {
           children: [
             const Icon(Icons.school_outlined, size: 48),
             const SizedBox(height: 12),
-            Text('Nenhum aluno encontrado',
-                style: Theme.of(context).textTheme.titleMedium),
+            Text('Nenhum aluno encontrado', style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 8),
             const Text('Cadastre o primeiro aluno em uma página dedicada.'),
             const SizedBox(height: 16),

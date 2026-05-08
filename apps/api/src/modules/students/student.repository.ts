@@ -8,17 +8,12 @@ export interface StudentCreateInput {
   status?: 'active' | 'inactive';
 }
 
-export async function listStudents(
-  tenantId: string,
-  pagination: PaginationInput,
-) {
+export async function listStudents(tenantId: string, pagination: PaginationInput) {
   const { from, to } = toRange(pagination);
 
   let query = supabaseAdmin
     .from('students')
-    .select('id, full_name, birth_date, document_number, status, created_at', {
-      count: 'exact',
-    })
+    .select('id, full_name, birth_date, document_number, status, created_at', { count: 'exact' })
     .eq('tenant_id', tenantId)
     .is('deleted_at', null)
     .order('full_name')
@@ -46,11 +41,7 @@ export async function getStudent(tenantId: string, id: string) {
   return data;
 }
 
-export async function createStudent(
-  tenantId: string,
-  input: StudentCreateInput,
-  userId: string,
-) {
+export async function createStudent(tenantId: string, input: StudentCreateInput, userId: string) {
   const { data, error } = await supabaseAdmin
     .from('students')
     .insert({
@@ -94,11 +85,7 @@ export async function updateStudent(
   return data;
 }
 
-export async function softDeleteStudent(
-  tenantId: string,
-  id: string,
-  userId: string,
-) {
+export async function softDeleteStudent(tenantId: string, id: string, userId: string) {
   const { data, error } = await supabaseAdmin
     .from('students')
     .update({ deleted_at: new Date().toISOString(), updated_by: userId })

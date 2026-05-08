@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import '../config/app_config.dart';
 
 class ApiClient {
+  static String? defaultAccessToken;
+
   ApiClient({http.Client? httpClient, this.accessToken})
       : _httpClient = httpClient ?? http.Client();
 
@@ -19,15 +21,14 @@ class ApiClient {
 
   Map<String, String> get _headers => {
         'content-type': 'application/json',
-        if (accessToken != null) 'authorization': 'Bearer $accessToken',
+        if ((accessToken ?? defaultAccessToken) != null) 'authorization': 'Bearer ${accessToken ?? defaultAccessToken}',
       };
 
   Future<Map<String, dynamic>> getJson(
     String path, {
     Map<String, String>? query,
   }) async {
-    final response =
-        await _httpClient.get(_uri(path, query), headers: _headers);
+    final response = await _httpClient.get(_uri(path, query), headers: _headers);
     return _decode(response);
   }
 
@@ -52,6 +53,11 @@ class ApiClient {
       headers: _headers,
       body: jsonEncode(body),
     );
+    return _decode(response);
+  }
+
+  Future<Map<String, dynamic>> deleteJson(String path) async {
+    final response = await _httpClient.delete(_uri(path), headers: _headers);
     return _decode(response);
   }
 

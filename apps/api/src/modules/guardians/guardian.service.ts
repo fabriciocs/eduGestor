@@ -5,21 +5,13 @@ import * as repo from './guardian.repository.js';
 
 const writeRoles = ['admin_saas', 'direcao', 'secretaria', 'coordenacao'];
 
-export async function listGuardians(
-  context: TenantContext,
-  pagination: PaginationInput,
-) {
+export async function listGuardians(context: TenantContext, pagination: PaginationInput) {
   return repo.listGuardians(context.id, pagination);
 }
 
-export async function createGuardian(
-  context: TenantContext,
-  input: repo.GuardianCreateInput,
-) {
+export async function createGuardian(context: TenantContext, input: repo.GuardianCreateInput) {
   if (!context.roles.some((role) => writeRoles.includes(role))) {
-    throw AppError.forbidden(
-      'Perfil sem permissão para cadastrar responsáveis.',
-    );
+    throw AppError.forbidden('Perfil sem permissão para cadastrar responsáveis.');
   }
   return repo.createGuardian(context.id, input, context.userId);
 }
@@ -35,13 +27,7 @@ export async function linkGuardian(
   },
 ) {
   if (!context.roles.some((role) => writeRoles.includes(role))) {
-    throw AppError.forbidden(
-      'Perfil sem permissão para vincular responsáveis.',
-    );
+    throw AppError.forbidden('Perfil sem permissão para vincular responsáveis.');
   }
-  return repo.linkGuardian({
-    ...input,
-    tenantId: context.id,
-    userId: context.userId,
-  });
+  return repo.linkGuardian({ ...input, tenantId: context.id, userId: context.userId });
 }

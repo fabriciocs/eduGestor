@@ -86,8 +86,7 @@ class _ImplementationChecklist extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Checklist técnico',
-                style: Theme.of(context).textTheme.titleLarge),
+            Text('Checklist técnico', style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 12),
             for (final item in items)
               ListTile(
