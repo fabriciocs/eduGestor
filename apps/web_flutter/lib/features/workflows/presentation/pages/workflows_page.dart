@@ -16,7 +16,8 @@ class WorkflowsPage extends StatelessWidget {
     _Workflow(
       title: 'Financeiro',
       description: 'Planos, parcelas, boletos, pagamentos, baixas e inadimplência.',
-      path: '/entidades/parcela_cobranca',
+      path: '/financeiro',
+      implemented: true,
     ),
     _Workflow(
       title: 'Frequência',
