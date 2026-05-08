@@ -14,7 +14,7 @@ import { registerAuditRoutes } from './modules/audit/audit.routes.js';
 
 export function buildApp() {
   const app = Fastify({
-    logger,
+    loggerInstance: logger,
     genReqId: (request) =>
       request.headers['x-request-id']?.toString() ?? randomUUID(),
   });
