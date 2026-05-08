@@ -17,6 +17,7 @@ class ResponsiveScaffold extends StatelessWidget {
     _Destination(label: 'Dashboard', icon: Icons.dashboard_outlined, path: '/'),
     _Destination(label: 'Módulos', icon: Icons.apps_outlined, path: '/modulos'),
     _Destination(label: 'Fluxos', icon: Icons.route_outlined, path: '/fluxos'),
+    _Destination(label: 'Matrículas', icon: Icons.assignment_ind_outlined, path: '/matriculas'),
     _Destination(label: 'Alunos', icon: Icons.school_outlined, path: '/alunos'),
     _Destination(label: 'Financeiro', icon: Icons.payments_outlined, path: '/entidades/conta_receber'),
     _Destination(label: 'Comunicação', icon: Icons.campaign_outlined, path: '/entidades/comunicado'),
@@ -75,8 +76,11 @@ class ResponsiveScaffold extends StatelessWidget {
 
   int _selectedIndex(BuildContext context) {
     final location = GoRouterState.of(context).uri.path;
-    if (location.startsWith('/alunos')) return 1;
-    return 0;
+    final index = destinations.indexWhere((destination) {
+      if (destination.path == '/') return location == '/';
+      return location.startsWith(destination.path);
+    });
+    return index < 0 ? 0 : index;
   }
 }
 

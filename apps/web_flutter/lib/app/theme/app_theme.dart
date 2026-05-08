@@ -14,7 +14,7 @@ class AppTheme {
       inputDecorationTheme: const InputDecorationTheme(
         border: OutlineInputBorder(),
       ),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         margin: EdgeInsets.all(0),
         elevation: 0,
       ),

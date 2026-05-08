@@ -1,12 +1,15 @@
 import { FastifyInstance } from 'fastify';
 import { paginationSchema } from '../../core/http/pagination.js';
 import { validateInput } from '../../core/validation/validate.js';
-import { guardianCreateSchema, linkGuardianSchema } from './guardian.schemas.js';
+import {
+  guardianCreateSchema,
+  linkGuardianSchema,
+} from './guardian.schemas.js';
 import * as service from './guardian.service.js';
 
 export function registerGuardianRoutes(app: FastifyInstance) {
   app.get('/guardians', async (request) => {
-    const pagination = { page: 1, pageSize: 20, ...validateInput(paginationSchema, request.query) };
+    const pagination = validateInput(paginationSchema, request.query);
     return service.listGuardians(request.tenant!, pagination);
   });
 
@@ -17,7 +20,7 @@ export function registerGuardianRoutes(app: FastifyInstance) {
   });
 
   app.post('/student-guardians', async (request, reply) => {
-    const input = { isFinancialResponsible: false, isPedagogicalResponsible: true, ...validateInput(linkGuardianSchema, request.body) };
+    const input = validateInput(linkGuardianSchema, request.body);
     const link = await service.linkGuardian(request.tenant!, input);
     return reply.status(201).send(link);
   });

@@ -14,6 +14,7 @@ import { registerAuditRoutes } from './modules/audit/audit.routes.js';
 import { registerCatalogRoutes } from './modules/catalog/catalog.routes.js';
 import { registerGenericEntityRoutes } from './modules/generic/generic.routes.js';
 import { registerWorkflowRoutes } from './modules/workflows/workflow.routes.js';
+import { registerEnrollmentRoutes } from './modules/enrollment/enrollment.routes.js';
 
 export function buildApp() {
   const app = Fastify({
@@ -41,6 +42,7 @@ export function buildApp() {
     registerCatalogRoutes(secured);
     registerGenericEntityRoutes(secured);
     registerWorkflowRoutes(secured);
+    registerEnrollmentRoutes(secured);
   }, { prefix: '/v1' });
 
   return app;
